@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* ---------- Website template ---------- */
+      html {
+        box-sizing: content-box;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: inherit;
+      }
+
+      body {
+        margin: 0;
+        padding: 0 10px;
+        background-color: #eef2f5;
+        color: #333;
+        font-family: "Muli", "Source Sans Pro", "Helvetica Neue", Helvetica,
+          Arial, Sans-Serif;
+        font-size: 12px;
+        line-height: 14.4px;
+        font-weight: 400;
+      }
+
+      h1 {
+        font-size: 18px;
+        line-height: 23px;
+      }
+
+      h2 {
+        font-size: 16px;
+        line-height: 20px;
+      }
+
+      h1,
+      h2 {
+        margin: 0 10px 15px;
+        font-weight: 400;
+      }
+
+      h3 {
+        margin: 14.04px 0;
+      }
+
+      h4 {
+        margin: 15.96px 0;
+      }
+
+      h3,
+      h4 {
+        font-size: 14px;
+      }
+
+      h5 {
+        font-size: 10px;
+        margin: 16.633px 0;
+      }
+
+      h6 {
+        font-size: 8px;
+        margin: 18.733px;
+      }
+
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: 700;
+        line-height: 14.4px;
+      }
+
+      p {
+        margin: 16px 0;
+      }
+
+      hr {
+        height: 0;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border: 0;
+      }
+
+      a {
+        color: #333;
+        background-color: transparent;
+        text-decoration: none;
+      }
+
+      a:hover,
+      a:focus {
+        text-decoration: underline;
+      }
+
+      b,
+      strong {
+        font-weight: 700;
+      }
+
+      em {
+        font-style: italic;
+      }
+
+      q {
+        display: inline;
+      }
+
+      blockquote {
+        margin: 12px 40px;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: inline-block;
+        vertical-align: middle;
+        border: 0;
+      }
+
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+
+      ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+
+      ol {
+        margin: 12 0;
+        padding: 0 0 0 40px;
+      }
+
+      dl {
+        margin: 12px 0;
+      }
+
+      dd {
+        margin-left: 40px;
+      }
+
+      article,
+      aside,
+      body,
+      details,
+      figcaption,
+      figure,
+      footer,
+      header,
+      hgroup,
+      main,
+      menu,
+      nav,
+      section,
+      summary {
+        display: block;
+      }
+
+      address {
+        display: block;
+        font-style: italic;
+      }
+
+      .tpl_header {
+        position: sticky;
+        top: 0;
+        max-width: 1920px;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .tpl_topNavigation {
+        height: 30px;
+        margin: 0 auto;
+        padding: 0;
+        background-color: #eef2f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+      }
+
+      .tpl_header-content {
+        position: relative;
+        left: -10px;
+        width: calc(100% + 20px);
+        height: 133px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        box-shadow: 0 9px 10px 0 rgb(124 134 144 / 15%);
+      }
+
+      .tpl_viewport::after {
+        position: absolute;
+        top: 0;
+        right: 5px;
+        content: "\(desktop\)";
+        font-size: 14px;
+      }
+
+      .tpl_header-content > h1 {
+        margin: -5px 0 0;
+      }
+
+      .tpl_main {
+        max-width: 1920px;
+        margin: 0 auto;
+        padding: 15px 10px 10px;
+        display: grid;
+        grid-template-columns: 250px 1fr;
+        background-color: #fff;
+      }
+
+      .tpl_sidebar {
+        width: 240px;
+        height: 100vh;
+        margin-right: 10px;
+        display: flex;
+        justify-content: center;
+        background-color: #fff;
+        border: 1px solid #ddd;
+      }
+
+      .tpl_breadcrumb {
+        height: 26px;
+        margin-bottom: 10px;
+        padding-left: 10px;
+        display: flex;
+        align-items: center;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        font-weight: bold;
+      }
+
+      .tpl_footer {
+        display: none;
+        padding: 0 10px 10px;
+        background-color: #fff;
+        color: #333;
+      }
+
+      .tpl_footer > p {
+        margin: 0;
+        font-size: 14px;
+      }
+
+      .tpl_footer > hr {
+        position: relative;
+        width: calc(100% + 20px);
+        left: -10px;
+        margin: 12px 0;
+        border: 0;
+        border-bottom: 1px solid #d4d5d5;
+      }
+
+      .tpl_buttons {
+        display: grid;
+        grid-template-columns: 2fr 3fr;
+        gap: 4px;
+        margin-bottom: 12px;
+      }
+
+      .tpl_buttons > button,
+      button.tpl_profile {
+        box-sizing: border-box;
+        background: linear-gradient(#fbfbfb, #f5f5f5);
+        color: #777;
+        border: 1px solid #bbb;
+        height: 36px;
+        padding: 8px 15px;
+        font-size: 0.75rem;
+        border-radius: 4px;
+      }
+
+      button.tpl_fav {
+        position: relative;
+        text-align: left;
+      }
+      button.tpl_fav::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        transform: translateY(-50%);
+        width: 10px;
+        height: 10px;
+        background: url("https://www.ocado.com/cmscontent/fhtml_image/36648442.svg")
+          no-repeat right center;
+        background-size: 10px;
+      }
+
+      button.tpl_profile {
+        width: 100%;
+      }
+
+      /* ----- Tablet viewport (between 480px and 1023px) ----- */
+
+      @media (max-width: 1023px) {
+        body {
+          padding: 0;
+        }
+
+        .tpl_header-content {
+          left: 0;
+          width: 100%;
+          height: 46.5px;
+          background-color: #4d216d;
+          color: #fff;
+          border: none;
+          box-shadow: none;
+        }
+
+        .tpl_viewport::after {
+          content: "\(tablet\)";
+        }
+
+        .tpl_main {
+          margin-top: 10px;
+          padding: 0;
+          grid-template-columns: 1fr;
+        }
+
+        .tpl_topNavigation,
+        .tpl_sidebar,
+        .tpl_breadcrumb {
+          display: none;
+        }
+      }
+      /* ----- /end Tablet viewport ----- */
+
+      /* ----- Mobile viewport (< 480px) ----- */
+
+      @media (max-width: 479px) {
+        .tpl_viewport::after {
+          content: "\(mobile\)";
+        }
+
+        .tpl_main {
+          padding-bottom: 10px;
+        }
+
+        .tpl_footer {
+          display: block;
+        }
+      }
+      /* ----- /end Mobile viewport ----- */
+
+      /* ---------- /end Website template ---------- */
+
+    </style>
+  </head>
+  <body>
+    <header class="tpl_header">
+      <div class="tpl_topNavigation">Top Navigation</div>
+      <div class="tpl_header-content">
+        <h1>HEADER <span class="tpl_viewport"></span></h1>
+      </div>
+    </header>
+    <main class="tpl_main">
+      <div class="tpl_sidebar">
+        <h2>Sidebar</h2>
+      </div>
+      <div class="tpl_content">
+        <nav class="tpl_breadcrumb">Breadcrumb</nav>
+
+        <!-- ##### Place your HTML + CSS here ##### -->
+
+        <!-- CSS -->
+
+        <style>
+
+			/* https://stackoverflow.com/questions/57893642/how-do-i-keep-position-relative-content-from-overlapping-my-position-sticky-he */
+			/* used this to overcome cards overlapping sticky navbar */
+      
+			.tpl_header {
+				z-index: 10;  
+			}
+
+          .grid {
+            box-sizing: border-box;
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 5px;
+            padding: 5px;
+          }
+
+          .grid > *:first-child {
+            grid-column: 1 / span 8;
+          }
+
+          .card {
+            box-sizing: border-box;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+          }
+
+          .card > .card-title {
+            box-sizing: border-box;
+            position: absolute;
+            width: 100%;
+            background-color: #2d333a;
+            padding: 8px 15px;
+            text-align: center;
+            color: white;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+          }
+
+          .grid .card .card-title > img[alt="arrow-right"] {
+            display: none;
+          }
+
+          .card > .mobile-banner {
+            display: none;
+          }
+
+          /* ----- Mobile viewport ( <= 479px) ----- */
+
+          @media (max-width: 479px) {
+            .card > .desktop-banner {
+              display: none;
+            }
+
+            .grid .card-img {
+              display: none;
+            }
+
+            .grid > *:first-child {
+              grid-column: unset;
+            }
+
+            .grid > *:first-child .mobile-banner {
+              display: inline-block;
+              grid-row: 1 / span 2;
+            }
+
+            .grid {
+              grid-template-columns: 1fr;
+              grid-column-gap: 0px;
+            }
+
+            .card > .card-title {
+              position: relative;
+              width: 100%;
+              display: block;
+              height: 100%;
+              padding: 12px;
+            }
+          
+          .grid .card .card-title > img[alt="arrow-right"] {
+            display: inline-block;
+            position: absolute;
+            top: 5px;
+            right: 0;
+            width: 30px;
+		  }  
+		}
+          /* ----- /end Mobile viewport ----- */
+
+          /* ----- Tablet viewport ( > 480px) ----- */
+
+          @media (max-width: 1280px) and (min-width: 480px) {
+            .grid {
+              grid-template-columns: repeat(4, 1fr);
+              grid-column-gap: 5px;
+              grid-row-gap: 5px;
+            }
+
+            .grid > *:first-child {
+              grid-column: 1 / span 4;
+              height: max-content;
+            }
+
+            .card:not(:first-child) {
+              max-height: 165px;
+            }
+
+            .card .card-title > img[alt="arrow-right"] {
+              display: none;
+            }
+          }
+
+          /* ----- /end Tablet viewport ----- */
+        </style>
+
+        <!-- HTML -->
+        <div class="grid">
+          <div class="card">
+            <img
+              src="assets/banner-desktop.jpg"
+              class="desktop-banner"
+              alt="banner-desktop"
+            />
+            <img
+              src="assets/banner-mobile.jpg"
+              class="mobile-banner"
+              alt="mobile-desktop"
+            />
+          </div>
+          <div class="card">
+            <span class="card-title"
+              >BBQ <img src="assets/arrow-right.png" alt="arrow-right"
+            /></span>
+            <img src="assets/cat-tile-1.jpg" class="card-img" alt="bbq-tile" />
+          </div>
+          <div class="card">
+            <span class="card-title"
+              >Drinks <img src="assets/arrow-right.png" alt="arrow-right"
+            /></span>
+            <img
+              src="assets/cat-tile-2.jpg"
+              class="card-img"
+              alt="drinks-tile"
+            />
+          </div>
+          <div class="card">
+            <span class="card-title"
+              >Summer Offers
+              <img src="assets/arrow-right.png" alt="arrow-right"
+            /></span>
+            <img
+              src="assets/cat-tile-3.jpg"
+              class="card-img"
+              alt="offers-tile"
+            />
+          </div>
+          <div class="card">
+            <span class="card-title"
+              >Treats & Snacks
+              <img src="assets/arrow-right.png" alt="arrow-right"
+            /></span>
+            <img
+              src="assets/cat-tile-4.jpg"
+              class="card-img"
+              alt="treats-tile"
+            />
+          </div>
+          <div class="card">
+            <span class="card-title"
+              >Outdoor & Holiday
+              <img src="assets/arrow-right.png" alt="arrow-right"
+            /></span>
+            <img
+              src="assets/cat-tile-5.jpg"
+              class="card-img"
+              alt="outdoor-tile"
+            />
+          </div>
+          <div class="card">
+            <span class="card-title"
+              >Picnic <img src="assets/arrow-right.png" alt="arrow-right"
+            /></span>
+            <img
+              src="assets/cat-tile-6.jpg"
+              class="card-img"
+              alt="picnic-tile"
+            />
+          </div>
+          <div class="card">
+            <span class="card-title"
+              >M&S <img src="assets/arrow-right.png" alt="arrow-right"
+            /></span>
+            <img src="assets/cat-tile-7.jpg" class="card-img" alt="m&s-tile" />
+          </div>
+          <div class="card">
+            <span class="card-title"
+              >Inspiration <img src="assets/arrow-right.png" alt="arrow-right"
+            /></span>
+            <img
+              src="assets/cat-tile-8.jpg"
+              class="card-img"
+              alt="inspiration-tile"
+            />
+          </div>
+        </div>
+
+        <!-- ##### /end your HTML + CSS ##### -->
+      </div>
+    </main>
+    <footer class="tpl_footer">
+      <p>Results for <strong>Product</strong> (100)</p>
+      <hr />
+      <div class="tpl_buttons">
+        <button class="tpl_refine">Refine by (1)</button>
+        <button class="tpl_fav">Favourites first</button>
+      </div>
+      <button class="tpl_profile">Food Profile</button>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,4 @@
+- One thing i would have done differently is separate the HTML and CSS files to clean up the code and make it easier to read
+-  If it was a bigger app i would introduce a framework to map over the components, make it more dynamic and reduce repeating the code
+- i’d also add more interactivity to the cards, such as hover effects like the arrow changing colour or size on hover. And adding transitions like a smooth fade-in animation for images as they load to enhance the visual appeal.
+- Compress images to reduce page load times without sacrificing image quality.
